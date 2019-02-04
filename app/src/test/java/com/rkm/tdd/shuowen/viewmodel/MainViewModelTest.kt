@@ -2,7 +2,6 @@ package com.rkm.tdd.shuowen.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.rkm.tdd.shuowen.db.model.Word
 import com.rkm.tdd.shuowen.model.WordItem
 import com.rkm.tdd.shuowen.repository.WordRepository
 import com.rkm.tdd.shuowen.util.AbsentLiveData
@@ -28,7 +27,7 @@ class MainViewModelTest {
     @Before
     fun setup() {
         repository = mock(WordRepository::class.java)
-        `when`(repository.wordList(anyString())).thenReturn(AbsentLiveData.create(listOf(Word())))
+        `when`(repository.wordList(anyString())).thenReturn(AbsentLiveData.create(listOf()))
         viewModel = MainViewModel(repository)
     }
 

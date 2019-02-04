@@ -25,6 +25,6 @@ class MainActivityTest {
     fun wordListShowing() {
         onView(withId(R.id.word_list)).check(matches(isDisplayed()))
 
-        onView(withId(R.id.word_list)).check(matches(withTextOnItemAtPosition(0, R.id.tv_name, "Word")))
+        onView(withId(R.id.word_list)).check(matches(withTextOnItemAtPosition(0, R.id.tv_name, "一")))
     }
 }
