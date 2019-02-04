@@ -8,8 +8,9 @@ import com.rkm.tdd.shuowen.repository.WordRepository
 import com.rkm.tdd.shuowen.util.AbsentLiveData
 import com.rkm.tdd.shuowen.util.ext.map
 import com.rkm.tdd.shuowen.util.ext.switchMap
+import javax.inject.Inject
 
-class MainViewModel(repository: WordRepository) : ViewModel() {
+class MainViewModel @Inject constructor(repository: WordRepository) : ViewModel() {
 
     val search = MutableLiveData<String>()
     val wordItems: LiveData<List<WordItem>>
