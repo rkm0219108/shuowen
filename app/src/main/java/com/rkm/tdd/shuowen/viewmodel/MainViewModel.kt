@@ -2,13 +2,14 @@ package com.rkm.tdd.shuowen.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.rkm.tdd.shuowen.model.WordItem
 import com.rkm.tdd.shuowen.repository.WordRepository
 import com.rkm.tdd.shuowen.util.AbsentLiveData
 import com.rkm.tdd.shuowen.util.ext.map
 import com.rkm.tdd.shuowen.util.ext.switchMap
 
-class MainViewModel(repository: WordRepository) {
+class MainViewModel(repository: WordRepository) : ViewModel() {
 
     val search = MutableLiveData<String>()
     val wordItems: LiveData<List<WordItem>>
