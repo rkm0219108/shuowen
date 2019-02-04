@@ -1,8 +1,10 @@
 package com.rkm.tdd.shuowen.model
 
-class WordItem {
+import com.rkm.tdd.shuowen.db.model.Word
 
-    var word = "Word"
+class WordItem(word: Word) {
+
+    val word = word.word
 
     fun areContentsTheSame(item: WordItem): Boolean = word == item.word
 }

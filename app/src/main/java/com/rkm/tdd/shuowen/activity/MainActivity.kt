@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.rkm.tdd.shuowen.R
 import com.rkm.tdd.shuowen.adapter.WordItemAdapter
+import com.rkm.tdd.shuowen.db.model.Word
 import com.rkm.tdd.shuowen.model.WordItem
 import kotlinx.android.synthetic.main.main_activity.*
 
@@ -17,6 +18,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         word_list.adapter = adapter
-        adapter.items = listOf(WordItem())
+        adapter.items = listOf(WordItem(Word()))
     }
 }

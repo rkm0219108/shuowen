@@ -47,10 +47,13 @@ android {
     }
     productFlavors {
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.1.0-alpha03'
 
@@ -60,6 +63,12 @@ dependencies {
 
 
     testImplementation 'junit:junit:4.12'
+
+    testImplementation 'org.mockito:mockito-core:2.23.0'
+    testImplementation 'org.powermock:powermock-api-mockito2:1.7.1'
+    testImplementation 'org.powermock:powermock-module-junit4:1.7.1'
+    testImplementation "androidx.arch.core:core-testing:2.0.0"
+
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test:runner:1.1.1'
