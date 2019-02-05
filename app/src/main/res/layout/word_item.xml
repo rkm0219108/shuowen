@@ -4,11 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="item" type="com.rkm.tdd.shuowen.model.WordItem"/>
+        <variable name="callback" type="com.rkm.tdd.shuowen.adapter.WordItemAdapter.Callback"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_white_ripple"
+        android:onClick="@{() -> callback.onItemClick(item)}"
         android:layout_marginBottom="1dp">
 
         <ImageView

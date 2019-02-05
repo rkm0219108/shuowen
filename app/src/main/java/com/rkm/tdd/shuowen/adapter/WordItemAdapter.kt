@@ -10,7 +10,7 @@ import com.rkm.tdd.shuowen.databinding.WordItemBinding
 import com.rkm.tdd.shuowen.model.WordItem
 import kotlin.properties.Delegates
 
-class WordItemAdapter : RecyclerView.Adapter<WordItemAdapter.ViewHolder>() {
+class WordItemAdapter(val callback: Callback) : RecyclerView.Adapter<WordItemAdapter.ViewHolder>() {
 
     var items: List<WordItem> by Delegates.observable(listOf()) { _, old, new ->
         DiffUtil.calculateDiff(object : DiffUtil.Callback() {
@@ -26,7 +26,9 @@ class WordItemAdapter : RecyclerView.Adapter<WordItemAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.word_item, parent, false))
+        ViewHolder(DataBindingUtil.inflate<WordItemBinding>(LayoutInflater.from(parent.context), R.layout.word_item, parent, false).apply {
+            callback = this@WordItemAdapter.callback
+        })
 
     override fun getItemCount(): Int = items.size
 
@@ -36,4 +38,8 @@ class WordItemAdapter : RecyclerView.Adapter<WordItemAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(val binding: WordItemBinding) : RecyclerView.ViewHolder(binding.root)
+
+    interface Callback {
+        fun onItemClick(item: WordItem)
+    }
 }
