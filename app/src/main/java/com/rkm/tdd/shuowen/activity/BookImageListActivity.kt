@@ -1,5 +1,6 @@
 package com.rkm.tdd.shuowen.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -11,7 +12,6 @@ import com.rkm.tdd.shuowen.di.Injectable
 import com.rkm.tdd.shuowen.util.ext.observe
 import com.rkm.tdd.shuowen.viewmodel.ImageListViewModel
 import kotlinx.android.synthetic.main.book_image_list_activity.*
-import timber.log.Timber
 import javax.inject.Inject
 
 class BookImageListActivity : AppCompatActivity(), Injectable {
@@ -24,7 +24,9 @@ class BookImageListActivity : AppCompatActivity(), Injectable {
 
     private val adapter = BookImageAdapter(object : BookImageAdapter.Callback {
         override fun onImageClick(image: BookImage) {
-            Timber.i(image.toString())
+            startActivity(Intent(this@BookImageListActivity, BookImageActivity::class.java).apply {
+                putExtra(BookImageActivity.EXTRA_IMAGE_URL, image.imgUrl)
+            })
         }
     })
 

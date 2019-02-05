@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 @BindingAdapter("visibleGone")
 fun showHide(view: View, show: Boolean) {
@@ -22,7 +23,7 @@ fun setImageRes(view: ImageView, resId: Int) {
 
 @BindingAdapter("imageUrl")
 fun setImageUrl(view: ImageView, imgUrl: String) {
-    Glide.with(view.context).load(imgUrl).into(view)
+    Glide.with(view.context).load(imgUrl).apply(RequestOptions.placeholderOf(R.drawable.progress_animation)).into(view)
 }
 
 @BindingAdapter("android:selected")
