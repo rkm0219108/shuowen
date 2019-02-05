@@ -1,5 +1,6 @@
 package com.rkm.tdd.shuowen.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity(), Injectable {
         setContentView(R.layout.main_activity)
         setSupportActionBar(toolbar)
 
+        initNav()
+
         word_list.adapter = adapter
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
@@ -41,6 +44,13 @@ class MainActivity : AppCompatActivity(), Injectable {
             adapter.items = it
         }
         viewModel.search.value = ""
+    }
+
+    private fun initNav() {
+        toolbar.setNavigationIcon(R.drawable.ic_nav_menu)
+        toolbar.setNavigationOnClickListener {
+            startActivity(Intent(this, BookVolumeListActivity::class.java))
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

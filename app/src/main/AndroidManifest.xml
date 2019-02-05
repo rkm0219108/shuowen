@@ -23,5 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activity.BookVolumeListActivity"
+            android:label="@string/img_book"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 </manifest>
