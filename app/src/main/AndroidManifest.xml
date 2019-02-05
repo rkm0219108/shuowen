@@ -29,5 +29,11 @@
             android:label="@string/img_book"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".activity.BookImageListActivity"
+            android:label=""
+            android:parentActivityName=".activity.BookVolumeListActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 </manifest>

@@ -1,6 +1,7 @@
 package com.rkm.tdd.shuowen.di
 
 import androidx.lifecycle.ViewModelProvider
+import com.rkm.tdd.shuowen.activity.BookImageListActivity
 import com.rkm.tdd.shuowen.activity.BookVolumeListActivity
 import com.rkm.tdd.shuowen.activity.MainActivity
 import dagger.Binds
@@ -18,4 +19,7 @@ internal abstract class UIModule {
 
     @ContributesAndroidInjector
     internal abstract fun contributeBookVolumeListActivity(): BookVolumeListActivity
+
+    @ContributesAndroidInjector
+    internal abstract fun contributeBookImageListActivity(): BookImageListActivity
 }

@@ -1,5 +1,6 @@
 package com.rkm.tdd.shuowen.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -11,7 +12,6 @@ import com.rkm.tdd.shuowen.model.VolumeItem
 import com.rkm.tdd.shuowen.util.ext.observe
 import com.rkm.tdd.shuowen.viewmodel.VolumeListViewModel
 import kotlinx.android.synthetic.main.book_volume_list_activity.*
-import timber.log.Timber
 import javax.inject.Inject
 
 class BookVolumeListActivity : AppCompatActivity(), Injectable {
@@ -20,7 +20,9 @@ class BookVolumeListActivity : AppCompatActivity(), Injectable {
 
     private val adapter = VolumeItemAdapter(object : VolumeItemAdapter.Callback {
         override fun onItemClick(item: VolumeItem) {
-            Timber.i(item.toString())
+            startActivity(Intent(this@BookVolumeListActivity, BookImageListActivity::class.java).apply {
+                putExtra(BookImageListActivity.EXTRA_VOLUME, item.volume)
+            })
         }
     })
 

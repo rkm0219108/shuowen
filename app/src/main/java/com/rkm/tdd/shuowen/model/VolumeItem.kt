@@ -4,7 +4,7 @@ import com.rkm.tdd.shuowen.db.model.BookImage
 
 class VolumeItem(bookImage: BookImage) {
 
-    private val volume = bookImage.volume
+    val volume = bookImage.volume
 
     fun displayName() = "第${volume}卷"
 

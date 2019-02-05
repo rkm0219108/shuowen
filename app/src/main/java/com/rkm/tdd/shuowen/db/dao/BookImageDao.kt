@@ -10,4 +10,7 @@ interface BookImageDao {
 
     @Query("select * from img_book group by volume")
     fun volumes(): LiveData<List<BookImage>>
+
+    @Query("select * from img_book where volume = :volume")
+    fun images(volume: Int): LiveData<List<BookImage>>
 }
