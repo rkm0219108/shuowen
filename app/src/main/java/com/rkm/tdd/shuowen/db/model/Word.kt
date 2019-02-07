@@ -23,4 +23,8 @@ data class Word(
     val oldImgUrl: String,
     @ColumnInfo(name = "content")
     val content: String
-)
+) {
+    override fun toString(): String {
+        return "Word(id=$id, word='$word', radicalId=$radicalId, radical='$radical', imgUrl='$imgUrl', oldWord='$oldWord', oldImgUrl='$oldImgUrl', content='$content')"
+    }
+}

@@ -12,4 +12,8 @@ open class WordRepository @Inject constructor(val dao: WordDao) {
     open fun wordList(search: String): LiveData<List<Word>> {
         return dao.words("%$search%")
     }
+
+    fun word(wordId: Int) = dao.word(wordId)
+
+    fun notes(wordId: Int) = dao.notes(wordId)
 }

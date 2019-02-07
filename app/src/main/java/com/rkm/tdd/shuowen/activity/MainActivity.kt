@@ -14,14 +14,15 @@ import com.rkm.tdd.shuowen.model.WordItem
 import com.rkm.tdd.shuowen.util.ext.observe
 import com.rkm.tdd.shuowen.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.main_activity.*
-import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), Injectable {
 
     private val adapter = WordItemAdapter(object : WordItemAdapter.Callback {
         override fun onItemClick(item: WordItem) {
-            Timber.i(item.toString())
+            startActivity(Intent(this@MainActivity, WordDetailActivity::class.java).apply {
+                putExtra(WordDetailActivity.EXTRA_WORD_ID, item.wordId)
+            })
         }
     })
 

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "da64a4508205d2ef72b7262eafa30586",
+    "identityHash": "c655c396fd4f5cbf73f198e97af63144",
     "entities": [
       {
         "tableName": "words",
@@ -100,11 +100,11 @@
       },
       {
         "tableName": "notes",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `content` TEXT NOT NULL, `note` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`word_id` INTEGER NOT NULL, `content` TEXT NOT NULL, `note` TEXT NOT NULL, PRIMARY KEY(`word_id`))",
         "fields": [
           {
-            "fieldPath": "id",
-            "columnName": "id",
+            "fieldPath": "wordId",
+            "columnName": "word_id",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -123,7 +123,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "word_id"
           ],
           "autoGenerate": false
         },
@@ -132,11 +132,11 @@
       },
       {
         "tableName": "old_word_notes",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `content` TEXT NOT NULL, `note` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`word_id` INTEGER NOT NULL, `content` TEXT NOT NULL, `note` TEXT NOT NULL, PRIMARY KEY(`word_id`))",
         "fields": [
           {
             "fieldPath": "id",
-            "columnName": "id",
+            "columnName": "word_id",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -155,7 +155,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "word_id"
           ],
           "autoGenerate": false
         },
@@ -197,7 +197,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"da64a4508205d2ef72b7262eafa30586\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c655c396fd4f5cbf73f198e97af63144\")"
     ]
   }
 }

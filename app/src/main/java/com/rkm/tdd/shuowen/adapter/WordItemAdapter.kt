@@ -18,17 +18,24 @@ class WordItemAdapter(val callback: Callback) : RecyclerView.Adapter<WordItemAda
 
             override fun getNewListSize(): Int = new.size
 
-            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean = true
+            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+                old[oldItemPosition].wordId == new[newItemPosition].wordId
 
             override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
-                    old[oldItemPosition].areContentsTheSame(new[newItemPosition])
+                old[oldItemPosition].areContentsTheSame(new[newItemPosition])
         }).dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(DataBindingUtil.inflate<WordItemBinding>(LayoutInflater.from(parent.context), R.layout.word_item, parent, false).apply {
-            callback = this@WordItemAdapter.callback
-        })
+        ViewHolder(
+            DataBindingUtil.inflate<WordItemBinding>(
+                LayoutInflater.from(parent.context),
+                R.layout.word_item,
+                parent,
+                false
+            ).apply {
+                callback = this@WordItemAdapter.callback
+            })
 
     override fun getItemCount(): Int = items.size
 

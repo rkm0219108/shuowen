@@ -41,5 +41,11 @@
             android:label=""
             android:parentActivityName=".activity.BookImageListActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".activity.WordDetailActivity"
+            android:label=""
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 </manifest>

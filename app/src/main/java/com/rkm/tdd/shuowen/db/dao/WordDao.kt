@@ -22,9 +22,9 @@ interface WordDao {
     @Query("select words.id, word, radicals.id as radical_id, radicals.radical, img_url, old_word, old_img_url, content from words left join radicals on words.radical_id = radicals.id where words.radical_id = :radicalId")
     fun words(radicalId: Int): LiveData<List<Word>>
 
-    @Query("select * from notes where id = :wordId")
+    @Query("select * from notes where word_id = :wordId")
     fun notes(wordId: Int): LiveData<List<Note>>
 
-    @Query("select * from old_word_notes where id = :wordId")
+    @Query("select * from old_word_notes where word_id = :wordId")
     fun oldWordNotes(wordId: Int): LiveData<List<OldWordNote>>
 }
