@@ -16,4 +16,6 @@ open class WordRepository @Inject constructor(val dao: WordDao) {
     fun word(wordId: Int) = dao.word(wordId)
 
     fun notes(wordId: Int) = dao.notes(wordId)
+
+    fun oldWordNotes(wordId: Int) = dao.oldWordNotes(wordId)
 }

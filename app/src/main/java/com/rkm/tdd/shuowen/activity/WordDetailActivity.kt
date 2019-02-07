@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.rkm.tdd.shuowen.R
 import com.rkm.tdd.shuowen.databinding.NoteItemBinding
+import com.rkm.tdd.shuowen.databinding.OldWordNoteItemBinding
 import com.rkm.tdd.shuowen.databinding.WordDetailActivityBinding
 import com.rkm.tdd.shuowen.di.Injectable
 import com.rkm.tdd.shuowen.util.ext.observe
@@ -40,10 +41,26 @@ class WordDetailActivity : AppCompatActivity(), Injectable {
             notes ?: return@observe
 
             notes.forEach {
-                ll_notes.addView(
+                binding.llNotes.addView(
                     DataBindingUtil.inflate<NoteItemBinding>(
                         layoutInflater,
                         R.layout.note_item,
+                        null,
+                        false
+                    ).apply {
+                        note = it
+                    }.root
+                )
+            }
+        }
+        viewModel.oldWordNotes.observe(this) { notes ->
+            notes ?: return@observe
+
+            notes.forEach {
+                binding.llOldWordNotes.addView(
+                    DataBindingUtil.inflate<OldWordNoteItemBinding>(
+                        layoutInflater,
+                        R.layout.old_word_note_item,
                         null,
                         false
                     ).apply {
