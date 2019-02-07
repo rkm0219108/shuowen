@@ -20,8 +20,8 @@ class BookVolumeListActivity : AppCompatActivity(), Injectable {
 
     private val adapter = VolumeItemAdapter(object : VolumeItemAdapter.Callback {
         override fun onItemClick(item: VolumeItem) {
-            startActivity(Intent(this@BookVolumeListActivity, BookImageListActivity::class.java).apply {
-                putExtra(BookImageListActivity.EXTRA_VOLUME, item.volume)
+            startActivity(Intent(this@BookVolumeListActivity, BookImagesActivity::class.java).apply {
+                putExtra(BookImagesActivity.EXTRA_VOLUME_ID, item.volumeId)
             })
         }
     })

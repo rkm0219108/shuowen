@@ -9,5 +9,7 @@ class BookImageRepository @Inject constructor(val dao: BookImageDao) {
 
     fun volumes() = dao.volumes()
 
-    fun images(volume: Int) = dao.images(volume)
+    fun images(volumeId: Int) = dao.images(volumeId)
+
+    fun volume(volumeId: Int) = dao.volume(volumeId)
 }

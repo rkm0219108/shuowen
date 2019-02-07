@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rkm.tdd.shuowen.db.model.BookImage
+import com.rkm.tdd.shuowen.db.model.BookVolume
 import com.rkm.tdd.shuowen.repository.BookImageRepository
 import com.rkm.tdd.shuowen.util.AbsentLiveData
 import com.rkm.tdd.shuowen.util.ext.switchMap
@@ -11,13 +12,19 @@ import javax.inject.Inject
 
 class ImageListViewModel @Inject constructor(repository: BookImageRepository): ViewModel() {
 
-    val volume = MutableLiveData<Int>()
+    val volumeId = MutableLiveData<Int>()
     val images: LiveData<List<BookImage>>
+    val volume: LiveData<BookVolume>
 
     init {
-        images = volume.switchMap {
+        images = volumeId.switchMap {
             if (it == null) AbsentLiveData.create(listOf())
             else repository.images(it)
+        }
+
+        volume = volumeId.switchMap {
+            if (it == null) AbsentLiveData.create()
+            else repository.volume(it)
         }
     }
 }

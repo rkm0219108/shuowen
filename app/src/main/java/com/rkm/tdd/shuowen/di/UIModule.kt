@@ -19,7 +19,7 @@ internal abstract class UIModule {
     internal abstract fun contributeBookVolumeListActivity(): BookVolumeListActivity
 
     @ContributesAndroidInjector
-    internal abstract fun contributeBookImageListActivity(): BookImageListActivity
+    internal abstract fun contributeBookImageListActivity(): BookImagesActivity
 
     @ContributesAndroidInjector(modules = [WordDetailActivityBuildersModule::class])
     internal abstract fun contributeWordDetailActivity(): WordDetailActivity

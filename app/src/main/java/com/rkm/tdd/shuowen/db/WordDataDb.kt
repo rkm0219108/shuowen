@@ -12,6 +12,7 @@ import com.rkm.tdd.shuowen.db.model.*
         Radical::class,
         Note::class,
         OldWordNote::class,
+        BookVolume::class,
         BookImage::class
     ], version = 1
 )

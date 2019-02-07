@@ -4,13 +4,13 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "img_book")
+@Entity(tableName = "book_img")
 data class BookImage(
     @PrimaryKey
     @ColumnInfo(name = "id")
     val id: Int,
-    @ColumnInfo(name = "volume")
-    val volume: Int,
+    @ColumnInfo(name = "volume_id")
+    val volumeId: Int,
     @ColumnInfo(name = "img_url")
     val imgUrl: String
 )

@@ -31,7 +31,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
-            android:name=".activity.BookImageListActivity"
+            android:name=".activity.BookImagesActivity"
             android:label=""
             android:parentActivityName=".activity.BookVolumeListActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
@@ -39,7 +39,7 @@
         <activity
             android:name=".activity.BookImageActivity"
             android:label=""
-            android:parentActivityName=".activity.BookImageListActivity"
+            android:parentActivityName=".activity.BookImagesActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
