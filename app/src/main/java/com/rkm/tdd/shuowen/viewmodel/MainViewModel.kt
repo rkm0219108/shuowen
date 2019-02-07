@@ -20,7 +20,7 @@ class MainViewModel @Inject constructor(repository: WordRepository) : ViewModel(
             if (search == null) {
                 return@switchMap AbsentLiveData.create(emptyList<WordItem>())
             }
-            repository.wordList(search).map { words ->
+            repository.words(search).map { words ->
                 if (words == null) {
                     return@map emptyList<WordItem>()
                 }

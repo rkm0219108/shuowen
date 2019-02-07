@@ -16,6 +16,9 @@ interface WordDao {
     @Query("select words.id, word, radicals.id as radical_id, radicals.radical, img_url, old_word, old_img_url, content from words left join radicals on words.radical_id = radicals.id where words.id = :wordId")
     fun word(wordId: Int): LiveData<Word>
 
+    @Query("select words.id from words left join radicals on words.radical_id = radicals.id where word like :search or radicals.radical like :search")
+    fun wordIds(search: String): LiveData<List<Int>>
+
     @Query("select * from radicals")
     fun radicals(): LiveData<List<Radical>>
 

@@ -1,10 +1,7 @@
 package com.rkm.tdd.shuowen.di
 
 import androidx.lifecycle.ViewModel
-import com.rkm.tdd.shuowen.viewmodel.ImageListViewModel
-import com.rkm.tdd.shuowen.viewmodel.MainViewModel
-import com.rkm.tdd.shuowen.viewmodel.VolumeListViewModel
-import com.rkm.tdd.shuowen.viewmodel.WordDetailViewModel
+import com.rkm.tdd.shuowen.viewmodel.*
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -26,6 +23,11 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ImageListViewModel::class)
     abstract fun bindImageListViewModel(viewModel: ImageListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(WordDetailListViewModel::class)
+    abstract fun bindWordDetailListViewModel(viewModel: WordDetailListViewModel): ViewModel
 
     @Binds
     @IntoMap

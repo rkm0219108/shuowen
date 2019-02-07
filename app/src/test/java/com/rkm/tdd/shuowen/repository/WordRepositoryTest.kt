@@ -24,7 +24,7 @@ class WordRepositoryTest {
     @Test
     fun testNull() {
         `when`(dao.words(anyString())).thenReturn(AbsentLiveData.create(listOf()))
-        repository.wordList("")
+        repository.words("")
         verify(dao, times(1)).words(anyString())
     }
 
@@ -32,7 +32,7 @@ class WordRepositoryTest {
     fun testSearch() {
         `when`(dao.words(anyString())).thenReturn(AbsentLiveData.create(listOf()))
         val search = ""
-        repository.wordList(search)
+        repository.words(search)
 //        argumentCaptor<String>().apply {
 //            verify(dao, times(1)).words(capture())
 //            assertThat(value, `is`(search))

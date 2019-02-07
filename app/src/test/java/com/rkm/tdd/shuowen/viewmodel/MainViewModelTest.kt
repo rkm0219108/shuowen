@@ -27,20 +27,20 @@ class MainViewModelTest {
     @Before
     fun setup() {
         repository = mock(WordRepository::class.java)
-        `when`(repository.wordList(anyString())).thenReturn(AbsentLiveData.create(listOf()))
+        `when`(repository.words(anyString())).thenReturn(AbsentLiveData.create(listOf()))
         viewModel = MainViewModel(repository)
     }
 
     @Test
     fun testNull() {
         assertThat(viewModel.wordItems, notNullValue())
-        verify(repository, never()).wordList(anyString())
+        verify(repository, never()).words(anyString())
     }
 
     @Test
     fun dontFetchWithoutObservers() {
         viewModel.search.postValue("")
-        verify(repository, never()).wordList(anyString())
+        verify(repository, never()).words(anyString())
     }
 
     @Test
@@ -50,7 +50,7 @@ class MainViewModelTest {
         viewModel.wordItems.observeForever(mock(Observer::class.java) as Observer<in List<WordItem>>)
 
         /*argumentCaptor<String>().apply {
-            verify(repository, times(1)).wordList(capture())
+            verify(repository, times(1)).words(capture())
             assertThat(value, `is`(word))
         }*/
     }

@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), Injectable {
         override fun onItemClick(item: WordItem) {
             startActivity(Intent(this@MainActivity, WordDetailActivity::class.java).apply {
                 putExtra(WordDetailActivity.EXTRA_WORD_ID, item.wordId)
+                putExtra(WordDetailActivity.EXTRA_SEARCH_WORD, viewModel.search.value)
             })
         }
     })
