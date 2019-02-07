@@ -3,4 +3,8 @@
     <string name="menu_search">搜索</string>
     <string name="search_hint">漢字、部首</string>
     <string name="img_book">說文解字注圖片版</string>
+    <string name="menu_edit">編輯</string>
+    <string name="menu_done">完成</string>
+    <string name="hint_word">Word</string>
+    <string name="hint_content">Content</string>
 </resources>

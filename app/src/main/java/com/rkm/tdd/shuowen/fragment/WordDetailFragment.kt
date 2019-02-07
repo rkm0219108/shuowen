@@ -40,6 +40,8 @@ class WordDetailFragment : Fragment(), Injectable {
         viewModel.notes.observe(this) { notes ->
             notes ?: return@observe
 
+            binding.get()?.llNotes?.removeAllViews()
+
             notes.forEach {
                 binding.get()?.llNotes?.addView(
                     DataBindingUtil.inflate<NoteItemBinding>(
@@ -55,6 +57,8 @@ class WordDetailFragment : Fragment(), Injectable {
         }
         viewModel.oldWordNotes.observe(this) { notes ->
             notes ?: return@observe
+
+            binding.get()?.llOldWordNotes?.removeAllViews()
 
             notes.forEach {
                 binding.get()?.llOldWordNotes?.addView(

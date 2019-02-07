@@ -47,5 +47,11 @@
             android:label=""
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".activity.WordEditActivity"
+            android:label=""
+            android:parentActivityName=".activity.WordDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 </manifest>

@@ -33,4 +33,9 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(WordDetailViewModel::class)
     abstract fun bindWordDetailViewModel(viewModel: WordDetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(WordEditViewModel::class)
+    abstract fun bindWordEditViewModel(viewModel: WordEditViewModel): ViewModel
 }

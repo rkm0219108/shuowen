@@ -1,10 +1,7 @@
 package com.rkm.tdd.shuowen.di
 
 import androidx.lifecycle.ViewModelProvider
-import com.rkm.tdd.shuowen.activity.BookImageListActivity
-import com.rkm.tdd.shuowen.activity.BookVolumeListActivity
-import com.rkm.tdd.shuowen.activity.MainActivity
-import com.rkm.tdd.shuowen.activity.WordDetailActivity
+import com.rkm.tdd.shuowen.activity.*
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -26,4 +23,7 @@ internal abstract class UIModule {
 
     @ContributesAndroidInjector(modules = [WordDetailActivityBuildersModule::class])
     internal abstract fun contributeWordDetailActivity(): WordDetailActivity
+
+    @ContributesAndroidInjector
+    internal abstract fun contributeWordEditActivity(): WordEditActivity
 }

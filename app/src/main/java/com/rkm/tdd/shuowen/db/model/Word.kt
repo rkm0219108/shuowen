@@ -10,21 +10,19 @@ data class Word(
     @ColumnInfo(name = "id")
     val id: Int,
     @ColumnInfo(name = "word")
-    val word: String,
+    var word: String,
     @ColumnInfo(name = "radical_id")
     val radicalId: Int,
-    @ColumnInfo(name = "radical")
-    val radical: String,
     @ColumnInfo(name = "img_url")
     val imgUrl: String,
     @ColumnInfo(name = "old_word")
-    val oldWord: String,
+    var oldWord: String,
     @ColumnInfo(name = "old_img_url")
     val oldImgUrl: String,
     @ColumnInfo(name = "content")
-    val content: String
+    var content: String
 ) {
     override fun toString(): String {
-        return "Word(id=$id, word='$word', radicalId=$radicalId, radical='$radical', imgUrl='$imgUrl', oldWord='$oldWord', oldImgUrl='$oldImgUrl', content='$content')"
+        return "Word(id=$id, word='$word', radicalId=$radicalId, imgUrl='$imgUrl', oldWord='$oldWord', oldImgUrl='$oldImgUrl', content='$content')"
     }
 }

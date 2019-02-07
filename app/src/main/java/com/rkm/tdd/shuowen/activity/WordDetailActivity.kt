@@ -1,6 +1,9 @@
 package com.rkm.tdd.shuowen.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -72,6 +75,23 @@ class WordDetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
         }
 
         viewModel.search.value = intent.getStringExtra(EXTRA_SEARCH_WORD)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_word_detail, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_edit -> {
+                startActivity(Intent(this, WordEditActivity::class.java).apply {
+                    putExtra(WordEditActivity.EXTRA_WORD_ID, viewModel.wordId.value)
+                })
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector

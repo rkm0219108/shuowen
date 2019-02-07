@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c655c396fd4f5cbf73f198e97af63144",
+    "identityHash": "cad46c1b26ebab8332171b30b95ac118",
     "entities": [
       {
         "tableName": "words",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `word` TEXT NOT NULL, `radical_id` INTEGER NOT NULL, `radical` TEXT NOT NULL, `img_url` TEXT NOT NULL, `old_word` TEXT NOT NULL, `old_img_url` TEXT NOT NULL, `content` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `word` TEXT NOT NULL, `radical_id` INTEGER NOT NULL, `img_url` TEXT NOT NULL, `old_word` TEXT NOT NULL, `old_img_url` TEXT NOT NULL, `content` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -24,12 +24,6 @@
             "fieldPath": "radicalId",
             "columnName": "radical_id",
             "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "radical",
-            "columnName": "radical",
-            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -100,8 +94,14 @@
       },
       {
         "tableName": "notes",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`word_id` INTEGER NOT NULL, `content` TEXT NOT NULL, `note` TEXT NOT NULL, PRIMARY KEY(`word_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `word_id` INTEGER NOT NULL, `content` TEXT NOT NULL, `note` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
           {
             "fieldPath": "wordId",
             "columnName": "word_id",
@@ -123,7 +123,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "word_id"
+            "id"
           ],
           "autoGenerate": false
         },
@@ -132,10 +132,16 @@
       },
       {
         "tableName": "old_word_notes",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`word_id` INTEGER NOT NULL, `content` TEXT NOT NULL, `note` TEXT NOT NULL, PRIMARY KEY(`word_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `word_id` INTEGER NOT NULL, `content` TEXT NOT NULL, `note` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wordId",
             "columnName": "word_id",
             "affinity": "INTEGER",
             "notNull": true
@@ -155,7 +161,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "word_id"
+            "id"
           ],
           "autoGenerate": false
         },
@@ -197,7 +203,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c655c396fd4f5cbf73f198e97af63144\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"cad46c1b26ebab8332171b30b95ac118\")"
     ]
   }
 }
