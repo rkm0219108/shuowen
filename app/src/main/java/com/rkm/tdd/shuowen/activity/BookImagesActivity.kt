@@ -26,7 +26,8 @@ class BookImagesActivity : AppCompatActivity(), Injectable {
     private val adapter = BookImageAdapter(object : BookImageAdapter.Callback {
         override fun onImageClick(image: BookImage) {
             startActivity(Intent(this@BookImagesActivity, BookImageActivity::class.java).apply {
-                putExtra(BookImageActivity.EXTRA_IMAGE_URL, image.imgUrl)
+                putExtra(BookImageActivity.EXTRA_VOLUME_ID, image.volumeId)
+                putExtra(BookImageActivity.EXTRA_IMAGE_ID, image.id)
             })
         }
     })

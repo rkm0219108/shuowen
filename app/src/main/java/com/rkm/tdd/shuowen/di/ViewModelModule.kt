@@ -43,4 +43,9 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(BookImageViewModel::class)
     abstract fun bindBookImageViewModel(viewModel: BookImageViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BookImageListViewModel::class)
+    abstract fun bindBookImageListViewModel(viewModel: BookImageListViewModel): ViewModel
 }

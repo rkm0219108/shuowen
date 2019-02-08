@@ -2,25 +2,30 @@ package com.rkm.tdd.shuowen.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions.placeholderOf
 import com.rkm.tdd.shuowen.R
-import com.rkm.tdd.shuowen.di.Injectable
-import com.rkm.tdd.shuowen.util.SquareCenterCrop
+import com.rkm.tdd.shuowen.adapter.BookImagePageAdapter
 import com.rkm.tdd.shuowen.util.ext.observe
-import com.rkm.tdd.shuowen.viewmodel.BookImageViewModel
+import com.rkm.tdd.shuowen.viewmodel.BookImageListViewModel
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.book_image_activity.*
 import javax.inject.Inject
 
-class BookImageActivity : AppCompatActivity(), Injectable {
+class BookImageActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     companion object {
-        const val EXTRA_IMAGE_URL = "image_url"
+        const val EXTRA_VOLUME_ID = "volume_id"
+        const val EXTRA_IMAGE_ID = "image_id"
     }
 
     @Inject lateinit var factory: ViewModelProvider.Factory
+    @Inject lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+
+    private val adapter = BookImagePageAdapter(supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,23 +33,29 @@ class BookImageActivity : AppCompatActivity(), Injectable {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val viewModel = ViewModelProviders.of(this, factory).get(BookImageViewModel::class.java)
-        viewModel.scaleLevel.observe(this) {
+        view_pager.adapter = adapter
+
+        val viewModel = ViewModelProviders.of(this, factory).get(BookImageListViewModel::class.java)
+        viewModel.imageIds.observe(this) {
             it ?: return@observe
 
-            image.mediumScale = it
+            val imageIds = it.reversed()
+
+            adapter.imageIds = imageIds
+            adapter.notifyDataSetChanged()
+
+            val imageId = intent.getIntExtra(EXTRA_IMAGE_ID, 1)
+            view_pager.setCurrentItem(imageIds.indexOf(imageId), false)
         }
 
-        val imgUrl = intent.getStringExtra(EXTRA_IMAGE_URL)
-        Glide.with(this).load(imgUrl)
-            .apply(placeholderOf(R.drawable.progress_animation).transform(SquareCenterCrop().apply {
-                resizeListener = object : SquareCenterCrop.ResizeListener {
-                    override fun onResized(medium: Float) {
-                        viewModel.update(medium)
-                    }
-                }
-            })).into(image)
+        viewModel.volume.observe(this) {
+            it ?: return@observe
 
-        viewModel.imageUrl.value = imgUrl
+            title = "第${it.volume}卷"
+        }
+
+        viewModel.volumeId.value = intent.getIntExtra(EXTRA_VOLUME_ID, 1)
     }
+
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
 }
