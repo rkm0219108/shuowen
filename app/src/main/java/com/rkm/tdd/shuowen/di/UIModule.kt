@@ -26,4 +26,7 @@ internal abstract class UIModule {
 
     @ContributesAndroidInjector
     internal abstract fun contributeWordEditActivity(): WordEditActivity
+
+    @ContributesAndroidInjector
+    internal abstract fun contributeBookImageActivity(): BookImageActivity
 }

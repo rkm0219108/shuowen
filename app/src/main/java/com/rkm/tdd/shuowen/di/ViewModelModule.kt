@@ -38,4 +38,9 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(WordEditViewModel::class)
     abstract fun bindWordEditViewModel(viewModel: WordEditViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BookImageViewModel::class)
+    abstract fun bindBookImageViewModel(viewModel: BookImageViewModel): ViewModel
 }

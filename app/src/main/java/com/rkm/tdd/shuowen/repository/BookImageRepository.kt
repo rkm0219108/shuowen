@@ -7,6 +7,8 @@ import javax.inject.Singleton
 @Singleton
 class BookImageRepository @Inject constructor(val dao: BookImageDao) {
 
+    val scaleLevels = mutableMapOf<String, Float>()
+
     fun volumes() = dao.volumes()
 
     fun images(volumeId: Int) = dao.images(volumeId)
