@@ -27,6 +27,12 @@ interface WordDao {
     @Query("select * from radicals")
     fun radicals(): LiveData<List<Radical>>
 
+    @Query("select * from radicals where id = :radicalId")
+    fun radical(radicalId: Int): LiveData<Radical>
+
+    @Update(onConflict = REPLACE)
+    fun save(radical: Radical)
+
     @Query("select words.id, word, radicals.id as radical_id, img_url, old_word, old_img_url, content from words left join radicals on words.radical_id = radicals.id where words.radical_id = :radicalId")
     fun words(radicalId: Int): LiveData<List<Word>>
 

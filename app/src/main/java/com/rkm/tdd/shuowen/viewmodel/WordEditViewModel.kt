@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rkm.tdd.shuowen.db.model.Note
 import com.rkm.tdd.shuowen.db.model.OldWordNote
+import com.rkm.tdd.shuowen.db.model.Radical
 import com.rkm.tdd.shuowen.db.model.Word
 import com.rkm.tdd.shuowen.repository.WordRepository
 import com.rkm.tdd.shuowen.util.AbsentLiveData
@@ -15,6 +16,7 @@ class WordEditViewModel @Inject constructor(val repository: WordRepository) : Vi
 
     val wordId = MutableLiveData<Int>()
     val word: LiveData<Word>
+    val radical: LiveData<Radical>
     val notes: LiveData<List<Note>>
     val oldWordNotes: LiveData<List<OldWordNote>>
 
@@ -22,6 +24,11 @@ class WordEditViewModel @Inject constructor(val repository: WordRepository) : Vi
         word = wordId.switchMap {
             if (it == null) AbsentLiveData.create()
             else repository.word(it)
+        }
+
+        radical = word.switchMap {
+            if (it == null) AbsentLiveData.create()
+            else repository.radical(it.radicalId)
         }
 
         notes = wordId.switchMap {
@@ -37,6 +44,11 @@ class WordEditViewModel @Inject constructor(val repository: WordRepository) : Vi
 
     fun save(word: Word) {
         repository.save(word)
+
+        val radical = this.radical.value
+        radical ?: return
+        radical.radical = word.word
+        repository.save(radical)
     }
 
     fun save(note: Note) {

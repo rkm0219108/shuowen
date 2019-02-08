@@ -4,6 +4,7 @@ import com.rkm.tdd.shuowen.AppExecutors
 import com.rkm.tdd.shuowen.db.dao.WordDao
 import com.rkm.tdd.shuowen.db.model.Note
 import com.rkm.tdd.shuowen.db.model.OldWordNote
+import com.rkm.tdd.shuowen.db.model.Radical
 import com.rkm.tdd.shuowen.db.model.Word
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -21,6 +22,8 @@ open class WordRepository @Inject constructor(val dao: WordDao, private val appE
 
     fun wordIds(search: String) = dao.wordIds("%$search%")
 
+    fun radical(radicalId: Int) = dao.radical(radicalId)
+
     fun save(word: Word) {
         appExecutors.diskIO().execute {
             dao.save(word)
@@ -36,6 +39,12 @@ open class WordRepository @Inject constructor(val dao: WordDao, private val appE
     fun save(note: OldWordNote) {
         appExecutors.diskIO().execute {
             dao.save(note)
+        }
+    }
+
+    fun save(radical: Radical) {
+        appExecutors.diskIO().execute {
+            dao.save(radical)
         }
     }
 }

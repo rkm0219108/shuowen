@@ -65,7 +65,7 @@ class WordDetailActivity : AppCompatActivity(), HasSupportFragmentInjector {
             adapter.notifyDataSetChanged()
 
             val wordId = intent.getIntExtra(EXTRA_WORD_ID, 1)
-            binding.viewPager.currentItem = it.indexOf(wordId)
+            binding.viewPager.setCurrentItem(it.indexOf(wordId), false)
             viewModel.wordId.value = wordId
         }
         viewModel.word.observe(this) {

@@ -10,7 +10,7 @@ data class Radical(
     @ColumnInfo(name = "id")
     val id: Int,
     @ColumnInfo(name = "radical")
-    val radical: String,
+    var radical: String,
     @ColumnInfo(name = "word_id")
     val wordId: Int
 )
