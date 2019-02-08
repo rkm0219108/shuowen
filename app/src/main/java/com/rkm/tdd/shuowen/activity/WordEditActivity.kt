@@ -15,6 +15,7 @@ import com.rkm.tdd.shuowen.di.Injectable
 import com.rkm.tdd.shuowen.util.ext.observe
 import com.rkm.tdd.shuowen.viewmodel.WordEditViewModel
 import kotlinx.android.synthetic.main.word_edit_activity.*
+import timber.log.Timber
 import javax.inject.Inject
 
 class WordEditActivity : AppCompatActivity(), Injectable {
@@ -43,6 +44,9 @@ class WordEditActivity : AppCompatActivity(), Injectable {
 
             title = it.word
             binding.word = it
+        }
+        viewModel.radical.observe(this) {
+            Timber.i(it.toString())
         }
         viewModel.notes.observe(this) { notes ->
             notes ?: return@observe

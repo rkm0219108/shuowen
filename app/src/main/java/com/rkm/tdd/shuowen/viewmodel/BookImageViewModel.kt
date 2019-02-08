@@ -10,7 +10,7 @@ import com.rkm.tdd.shuowen.util.ext.map
 import com.rkm.tdd.shuowen.util.ext.switchMap
 import javax.inject.Inject
 
-class BookImageViewModel @Inject constructor(val repository: BookImageRepository) : ViewModel() {
+class BookImageViewModel @Inject constructor(private val repository: BookImageRepository) : ViewModel() {
 
     val imageId = MutableLiveData<Int>()
     val scaleLevel: LiveData<Float>

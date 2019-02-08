@@ -22,7 +22,7 @@ open class WordRepository @Inject constructor(val dao: WordDao, private val appE
 
     fun wordIds(search: String) = dao.wordIds("%$search%")
 
-    fun radical(radicalId: Int) = dao.radical(radicalId)
+    fun radical(wordId: Int) = dao.radical(wordId)
 
     fun save(word: Word) {
         appExecutors.diskIO().execute {

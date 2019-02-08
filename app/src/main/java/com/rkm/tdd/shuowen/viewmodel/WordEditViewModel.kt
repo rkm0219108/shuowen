@@ -12,7 +12,7 @@ import com.rkm.tdd.shuowen.util.AbsentLiveData
 import com.rkm.tdd.shuowen.util.ext.switchMap
 import javax.inject.Inject
 
-class WordEditViewModel @Inject constructor(val repository: WordRepository) : ViewModel() {
+class WordEditViewModel @Inject constructor(private val repository: WordRepository) : ViewModel() {
 
     val wordId = MutableLiveData<Int>()
     val word: LiveData<Word>
@@ -26,9 +26,9 @@ class WordEditViewModel @Inject constructor(val repository: WordRepository) : Vi
             else repository.word(it)
         }
 
-        radical = word.switchMap {
+        radical = wordId.switchMap {
             if (it == null) AbsentLiveData.create()
-            else repository.radical(it.radicalId)
+            else repository.radical(it)
         }
 
         notes = wordId.switchMap {
