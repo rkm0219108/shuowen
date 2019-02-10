@@ -5,6 +5,7 @@ import com.rkm.tdd.shuowen.db.model.Word
 class WordItem(word: Word) {
 
     val word = word.word
+    val pinyin = word.pinyin
     val content = word.content
     val imgUrl = word.imgUrl
     val wordId = word.id
