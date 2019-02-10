@@ -109,6 +109,7 @@ class WordEditActivity : AppCompatActivity(), Injectable {
         word.word = binding.editWord.text.toString()
         word.content = binding.editContent.text.toString()
         word.oldWord = binding.editOldWord.text.toString()
+        word.pinyin = binding.editPinyin.text.toString()
         viewModel.save(word)
 
         noteItemBindings.forEach {

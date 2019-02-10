@@ -12,10 +12,10 @@ import com.rkm.tdd.shuowen.db.model.Word
 
 @Dao
 interface WordDao {
-    @Query("select words.id, word, radicals.id as radical_id, img_url, old_word, old_img_url, content from words left join radicals on words.radical_id = radicals.id where word like :search or radicals.radical like :search")
+    @Query("select words.id, word, pinyin, radicals.id as radical_id, img_url, old_word, old_img_url, content from words left join radicals on words.radical_id = radicals.id where word like :search or radicals.radical like :search")
     fun words(search: String): LiveData<List<Word>>
 
-    @Query("select words.id, word, radicals.id as radical_id, img_url, old_word, old_img_url, content from words left join radicals on words.radical_id = radicals.id where words.id = :wordId")
+    @Query("select words.id, word, pinyin, radicals.id as radical_id, img_url, old_word, old_img_url, content from words left join radicals on words.radical_id = radicals.id where words.id = :wordId")
     fun word(wordId: Int): LiveData<Word>
 
     @Update(onConflict = REPLACE)
@@ -33,7 +33,7 @@ interface WordDao {
     @Update(onConflict = REPLACE)
     fun save(radical: Radical)
 
-    @Query("select words.id, word, radicals.id as radical_id, img_url, old_word, old_img_url, content from words left join radicals on words.radical_id = radicals.id where words.radical_id = :radicalId")
+    @Query("select words.id, word, pinyin, radicals.id as radical_id, img_url, old_word, old_img_url, content from words left join radicals on words.radical_id = radicals.id where words.radical_id = :radicalId")
     fun words(radicalId: Int): LiveData<List<Word>>
 
     @Query("select * from notes where word_id = :wordId")

@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f8eac7524e33ab8807b79a828fc2efe6",
+    "identityHash": "d56d99f39200b8a696dc125ac65516c5",
     "entities": [
       {
         "tableName": "words",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `word` TEXT NOT NULL, `radical_id` INTEGER NOT NULL, `img_url` TEXT NOT NULL, `old_word` TEXT NOT NULL, `old_img_url` TEXT NOT NULL, `content` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `word` TEXT NOT NULL, `pinyin` TEXT, `radical_id` INTEGER NOT NULL, `img_url` TEXT NOT NULL, `old_word` TEXT NOT NULL, `old_img_url` TEXT NOT NULL, `content` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -19,6 +19,12 @@
             "columnName": "word",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "pinyin",
+            "columnName": "pinyin",
+            "affinity": "TEXT",
+            "notNull": false
           },
           {
             "fieldPath": "radicalId",
@@ -229,7 +235,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"f8eac7524e33ab8807b79a828fc2efe6\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d56d99f39200b8a696dc125ac65516c5\")"
     ]
   }
 }

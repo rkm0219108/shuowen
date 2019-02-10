@@ -23,6 +23,7 @@ fun setImageRes(view: ImageView, resId: Int) {
 
 @BindingAdapter("imageUrl")
 fun setImageUrl(view: ImageView, imgUrl: String?) {
+    if (imgUrl?.isEmpty() == true) return
     Glide.with(view.context).load(imgUrl).apply(RequestOptions.placeholderOf(R.drawable.progress_animation)).into(view)
 }
 
