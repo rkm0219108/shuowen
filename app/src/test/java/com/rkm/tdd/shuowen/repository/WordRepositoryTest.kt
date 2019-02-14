@@ -1,24 +1,26 @@
 package com.rkm.tdd.shuowen.repository
 
+import com.rkm.tdd.shuowen.AppExecutors
 import com.rkm.tdd.shuowen.db.dao.WordDao
 import com.rkm.tdd.shuowen.util.AbsentLiveData
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 import org.mockito.ArgumentMatchers.anyString
+import org.mockito.Mock
 import org.mockito.Mockito.*
+import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(JUnit4::class)
+@RunWith(MockitoJUnitRunner::class)
 class WordRepositoryTest {
 
+    @Mock
     private lateinit var dao: WordDao
     private lateinit var repository: WordRepository
 
     @Before
     fun setup() {
-        dao = mock(WordDao::class.java)
-        repository = WordRepository(dao)
+        repository = WordRepository(dao, AppExecutors())
     }
 
     @Test

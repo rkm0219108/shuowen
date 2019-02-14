@@ -12,21 +12,22 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import org.mockito.Mock
 import org.mockito.Mockito.*
+import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(JUnit4::class)
+@RunWith(MockitoJUnitRunner::class)
 class MainViewModelTest {
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
 
+    @Mock
     private lateinit var repository: WordRepository
     private lateinit var viewModel: MainViewModel
 
     @Before
     fun setup() {
-        repository = mock(WordRepository::class.java)
         `when`(repository.words(anyString())).thenReturn(AbsentLiveData.create(listOf()))
         viewModel = MainViewModel(repository)
     }
