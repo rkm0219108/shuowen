@@ -37,7 +37,7 @@ class BookImageFragment : Fragment(), Injectable {
             it ?: return@observe
 
             binding.get()?.image?.let { image ->
-//                image.mediumScale = it
+                image.mediumScale = it
             }
         }
 
